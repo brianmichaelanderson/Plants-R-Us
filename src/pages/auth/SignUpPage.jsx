@@ -1,5 +1,20 @@
+import AuthForm from './AuthForm.jsx';
+
 const SignUpPage = () => {
-  return <div className='font-playfair text-green-700 font-medium'>Sign-Up <i className="fa-solid fa-bomb"></i></div>;
+  return (
+    <div className='font-playfair text-slate-800 font-medium border border-red-500 flex justify-center items-center'>
+      <AuthForm 
+        fields={
+          ([
+            { label: 'username', type: 'text' },
+            { label: 'password', type: 'password' },
+            { label: 'confirm password',  type: 'password' },
+          ])
+        }
+        submitButtonLabel="Create Account"
+      />
+    </div>
+  );
 };
 
 export default SignUpPage;

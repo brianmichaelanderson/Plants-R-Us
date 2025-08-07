@@ -2,8 +2,15 @@ import AuthForm from './AuthForm.jsx';
 
 const SignInPage = () => {
   return (
-    <div className='font-lato text-blue-500 font-bold'>
-      Sign-In <i className='fa-solid fa-triangle-exclamation'></i>
+    <div className='font-lato text-slate-900 font-bold border border-blue-500 flex justify-center items-center'>
+      <AuthForm
+        fields={[
+          { label: 'username', type: 'text' },
+          { label: 'password', type: 'password'},
+        ]}
+                submitButtonLabel="Sign In"
+
+      />
     </div>
   );
 };
