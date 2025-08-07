@@ -8,6 +8,8 @@ const SignInPage = () => {
           { label: 'username', type: 'text' },
           { label: 'password', type: 'password'},
         ]}
+                submitButtonLabel="Sign In"
+
       />
     </div>
   );

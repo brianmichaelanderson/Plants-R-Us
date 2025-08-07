@@ -11,6 +11,7 @@ const SignUpPage = () => {
             { label: 'confirm password',  type: 'password' },
           ])
         }
+        submitButtonLabel="Create Account"
       />
     </div>
   );
