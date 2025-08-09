@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Field from './Field';
 
 const AuthForm = (props) => {
-  const { fields, submitButtonLabel } = props;
+  const { fields, submitButtonLabel, onSubmit } = props;
   const [values, setValues] = useState(() => {
     const initialState = {};
     for (let field of fields) {
@@ -11,10 +11,16 @@ const AuthForm = (props) => {
     return initialState;
   });
 
-  console.log(values);
+//   console.log('current values', values);
 
   return (
-    <form className='bg-white border border-slate-300 rounded-md p-4 m-4 font-lato'>
+    <form
+      className='bg-white border border-slate-300 rounded-md p-4 m-4 font-lato'
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit(values);
+    }}
+    >
       {fields.map((field) => (
         <Field
           key={field.label}
