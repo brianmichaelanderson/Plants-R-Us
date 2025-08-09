@@ -15,8 +15,8 @@ const App = () => {
   return (
     <SessionContext.Provider
       value={{
-        //decode sessionToken then pull the username from it
-        username: jwtDecode(sessionToken).username,
+        //Ternary - if there's a token, then decode sessionToken extracting username else return null
+        username: sessionToken ? jwtDecode(sessionToken).username : null,
         signIn: (token) => {
           setSessionToken(token);
           userService.setSessionTokenStorage(token);
