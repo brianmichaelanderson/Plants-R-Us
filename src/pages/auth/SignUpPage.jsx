@@ -41,7 +41,7 @@ const SignUpPage = () => {
           });
           if (response.status === 201) {
             setError('');
-            navigate('/', {state: { accountCreated: "true" }})
+            navigate('/', {state: { accountCreated: true }})
           } else {
             const data = await response.json();
             setError(data.error);
