@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthForm from './AuthForm.jsx';
 import FormContainer from './AuthForm.jsx/FormContainer.jsx';
 import { useState } from 'react';
@@ -6,7 +6,7 @@ import * as userService from 'services/user.js';
 
 const SignUpPage = () => {
   const [error, setError] = useState('');
-  const [userCreated, setUserCreated] = useState('');
+  const navigate = useNavigate();
 
   return (
     <FormContainer>
@@ -14,12 +14,7 @@ const SignUpPage = () => {
         <div className='text-center text-red-600 font-lato mt-4 mb-3'>
           {error}
         </div>
-      )) ||
-        (userCreated && (
-          <div className='text-center text-blue-600 font-lato mt-4 mb-3'>
-            {userCreated}
-          </div>
-        ))}
+      ))}
       <AuthForm
         fields={[
           { label: 'username', type: 'text' },
@@ -46,10 +41,9 @@ const SignUpPage = () => {
           });
           if (response.status === 201) {
             setError('');
-            setUserCreated('Congrats! Account created!');
+            navigate('/', {state: { accountCreated: true }})
           } else {
             const data = await response.json();
-            setUserCreated('');
             setError(data.error);
           }
         }}
