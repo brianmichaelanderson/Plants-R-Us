@@ -4,7 +4,7 @@ const Field = (props) => {
   return (
     <div>
       <div className='flex flex-col'>
-        <label for={label} className='pl-1'>
+        <label htmlFor={label} className='pl-1'>
           {label}
         </label>
         <input
