@@ -1,14 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as plantService from 'services/plant';
 import NavBar from 'shared-components/NavBar.jsx';
 
 const PlantListPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [plants, setPlants] = useState([]);
+  
   const getAllPlants = async () => {
-      const response = await plantService.getPlants()
-      const data = await response.json()
-      console.log('response.status = ', response.status)
-      console.log('data = ', data)
-  }
+    const response = await plantService.getPlants();
+    const data = await response.json();
+    console.log('response.status = ', response.status);
+    console.log('data = ', data);
+  };
 
   useEffect(() => {
     getAllPlants();
