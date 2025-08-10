@@ -6,7 +6,7 @@ const NavBar = () => {
 
   return (
     <div className='bg-emerald-800 flex justify-center font-lato'>
-      <div className='text-white font-playfair flex items-center justify-between w-full max-w-5xl mx-8 my-4 text-3xl border border-red-400'>
+      <div className='text-white font-playfair flex items-center justify-between w-full max-w-5xl mx-8 my-4 text-3xl'>
         <div className='flex items-center p-3'>
           <img
             src='https://static-task-assets.react-formula.com/capstone_logo_light.png'
