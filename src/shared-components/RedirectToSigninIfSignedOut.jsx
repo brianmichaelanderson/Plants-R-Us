@@ -2,15 +2,15 @@ import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SessionContext from 'contexts/SessionContext';
 
-const RedirectToPlantsIfSignedIn = (props) => {
+const RedirectToSigninIfSignedOut = (props) => {
   const { username } = useContext(SessionContext);
   const navigate = useNavigate();
 
-  //  console.log('sessionContext from RedirectToPlantsIfSignedIn', sessionContext)
+  //  console.log('sessionContext from RedirectToSigninIfSignedOut', sessionContext)
 
   useEffect(() => {
-    if (username !== null) {
-      navigate('/plants');
+    if (username === null) {
+      navigate('/');
     }
   }, [username]);
 
@@ -19,4 +19,4 @@ const RedirectToPlantsIfSignedIn = (props) => {
 
 //If checking sessionContext confirms there is a username/valid session, then useNavigate to plants route.
 
-export default RedirectToPlantsIfSignedIn;
+export default RedirectToSigninIfSignedOut;
