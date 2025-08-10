@@ -12,7 +12,7 @@ const RedirectToSigninIfSignedOut = (props) => {
     if (username === null) {
       navigate('/');
     }
-  }, [username]);
+  }, [navigate, username]);
 
   return props.children;
 };
