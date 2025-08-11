@@ -1,13 +1,11 @@
 import SessionContext from 'contexts/SessionContext';
 import { useContext, useState } from 'react';
-import RedirectToSigninIfSignedOut from 'shared-components/RedirectToSigninIfSignedOut';
 
 const NavBar = () => {
   const { username, signOut } = useContext(SessionContext);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   return (
-    <RedirectToSigninIfSignedOut>
       <nav
         className='bg-emerald-800 flex justify-center font-lato'
         onMouseLeave={() => {
@@ -44,7 +42,6 @@ const NavBar = () => {
           </div>
         </div>
       </nav>
-    </RedirectToSigninIfSignedOut>
   );
 };
 
