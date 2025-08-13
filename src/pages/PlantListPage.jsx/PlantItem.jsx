@@ -3,7 +3,10 @@ import { useState } from 'react';
 
 const PlantItem = (props) => {
   const { plant } = props;
-  const [imageIdx, setImageIdx] = useState(0);
+  const getRandomIdx = (imagesArray) => Math.floor(Math.random() * imagesArray.length);
+  const [imageIdx, setImageIdx] = useState(() => getRandomIdx(plant.images));
+
+// console.log('imageIdx', imageIdx, 'plant.images.length', plant.images.length)
 
   const POT_COLORS = {
     stone: 'bg-stone-200',

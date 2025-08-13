@@ -45,7 +45,7 @@ const PlantListPage = () => {
               <div className='flex flex-wrap'>
                 {plants.map((plant) => (
                   //Set unique key because backend randomizes what's returned for get plants requests
-                  <div index={plant.name} className='mt-2 mr-2'>
+                  <div key={plant.name} className='mt-2 mr-2'>
                     <PlantItem plant={plant} />
                   </div>
                 ))}
