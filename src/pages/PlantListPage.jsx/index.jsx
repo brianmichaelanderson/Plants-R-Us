@@ -38,7 +38,7 @@ const PlantListPage = () => {
           </div>
         ) : (
           <div key='plants' className='flex justify-center'>
-            <div className='w-full max-w-6xl px-3 py-4'>
+            <div className='w-full max-w-5xl px-3 py-4'>
               <div className='font-playfair text-4xl text-emerald-700 '>
                 Plants In Stock
               </div>
