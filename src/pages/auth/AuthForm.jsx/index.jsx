@@ -27,7 +27,10 @@ const AuthForm = (props) => {
           key={field.label}
           label={field.label}
           type={field.type}
+          //values[field.label] will equate to either the key 'username' or the key 'password' depending on which field is currently being mapped.
           value={values[field.label]}
+          //Using bracket notation [field.label] so the correct variable/key ('username' or 'password' are populated w/ the correct e.target.value)
+          //brackets accesses the variable
           onChange={(e) => {
             setValues({ ...values, [field.label]: e.target.value });
           }}
