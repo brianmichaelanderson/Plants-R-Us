@@ -18,7 +18,7 @@ const PlantShowPage = () => {
       setPlant(await response.json());
       setIsLoading(false);
     })();
-  }, []);
+  }, [plantId]);
 
 //   console.log('PlantShowPage plant state = ', plant);
 
