@@ -7,7 +7,7 @@ import PlantInfoSection from './PlantInfoSection';
 
 const PlantShowPage = () => {
   const [plant, setPlant] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { plantId } = useParams();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const PlantShowPage = () => {
     })();
   }, []);
 
-//   console.log('PlantShowPage plant state = ', plant);
+  console.log('PlantShowPage plant state = ', plant);
 
   return (
     <div>

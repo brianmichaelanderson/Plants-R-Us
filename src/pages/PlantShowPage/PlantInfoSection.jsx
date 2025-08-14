@@ -1,8 +1,9 @@
+import PlantHeading from './PlantHeading';
 
 const PlantInfoSection = (props) => {
-    const { plant } = props;
+  const { plant } = props;
 
-// console.log("plant prop in PlantInfoSection = ", plant)
+  console.log("PlantInfoSection passed prop plant state = ", plant) 
 
   return (
     <div className='flex w-full max-w-5xl my-8'>
@@ -10,12 +11,8 @@ const PlantInfoSection = (props) => {
         <img src={plant.images[0].src} />
       </div>
       <div className='flex flex-col flex-1 px-8'>
-        <div className='flex justify-between text-emerald-800 text-4xl'>
-          <div className='font-playfair'>{plant.name}</div>
-          <div className='font-lato'>${plant.price}</div>
-        </div>
-        {plant.botanical_name}
-        <p>{plant.description}</p>
+      <PlantHeading plant={plant}/>
+        <p className='text-slate-600 leading-relaxed'>{plant.description}</p>
       </div>
     </div>
   );
