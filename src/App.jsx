@@ -6,6 +6,7 @@ import SignUpPage from './pages/auth/SignUpPage';
 import SessionContext from 'contexts/SessionContext';
 import * as userService from 'services/user';
 import PlantListPage from 'pages/PlantListPage.jsx';
+import PlantShowPage from 'pages/PlantShowPage';
 
 const App = () => {
   //looks in local storage to return a token or return null for the initial sessionToken state.
@@ -33,6 +34,7 @@ const App = () => {
           <Route path='/' element={<SignInPage />} />
           <Route path='/signup' element={<SignUpPage />} />
           <Route path='/plants' element={<PlantListPage />} />
+          <Route path='/plants/:plantId' element={<PlantShowPage />} />
         </Routes>
       </BrowserRouter>
     </SessionContext.Provider>

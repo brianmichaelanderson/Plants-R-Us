@@ -3,6 +3,7 @@ import * as plantService from 'services/plant';
 import NavBar from 'shared-components/NavBar.jsx';
 import RedirectToSigninIfSignedOut from 'shared-components/RedirectToSigninIfSignedOut';
 import PlantItem from './PlantItem';
+import LoadingSpinner from 'shared-components/LoadingSpinner';
 
 const PlantListPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,8 +13,8 @@ const PlantListPage = () => {
     setIsLoading(true);
     const response = await plantService.getPlants();
     const data = await response.json();
-    console.log('response.status = ', response.status);
-    console.log('data = ', data);
+    // console.log('response.status = ', response.status);
+    // console.log('data = ', data);
     setPlants(data);
     setIsLoading(false);
   };
@@ -33,9 +34,7 @@ const PlantListPage = () => {
       <NavBar />
       <div className='bg-emerald-50 min-h-screen'>
         {isLoading ? (
-          <div key='spinner' className='flex justify-center pt-40'>
-            <i className='fa-solid fa-spinner animate-spin text-3xl text-emerald-600'></i>
-          </div>
+          <LoadingSpinner />
         ) : (
           <div key='plants' className='flex justify-center'>
             <div className='w-full max-w-5xl px-3 py-4'>
@@ -43,8 +42,9 @@ const PlantListPage = () => {
                 Plants In Stock
               </div>
               <div className='flex flex-wrap'>
-                {plants.map((plant, idx) => (
-                  <div index={idx} className='mt-2 mr-2'>
+                {plants.map((plant) => (
+                  //Set unique key because backend randomizes what's returned for get plants requests
+                  <div key={plant.name} className='mt-2 mr-2'>
                     <PlantItem plant={plant} />
                   </div>
                 ))}
