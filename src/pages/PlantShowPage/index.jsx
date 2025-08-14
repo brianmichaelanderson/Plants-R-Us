@@ -7,7 +7,8 @@ import PlantInfoSection from './PlantInfoSection';
 
 const PlantShowPage = () => {
   const [plant, setPlant] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  //Had to set default from false to true else isLoading ternary would go immediately to else/falsy path before useEffect could complete its fetch meaning plant state would still be at default of null
+  const [isLoading, setIsLoading] = useState(true);
   const { plantId } = useParams();
 
   useEffect(() => {

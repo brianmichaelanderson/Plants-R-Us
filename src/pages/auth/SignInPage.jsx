@@ -26,6 +26,7 @@ const SignInPage = () => {
           </div>
         )}
         <AuthForm
+        //Passing an array of objects.  The initial curlies represent jsx, not an object.  So this is jsx (inside curlys) that has inside it an array of objects.
           fields={[
             { label: 'username', type: 'text' },
             { label: 'password', type: 'password' },
