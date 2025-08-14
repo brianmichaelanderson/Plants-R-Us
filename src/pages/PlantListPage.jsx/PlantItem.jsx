@@ -19,7 +19,7 @@ const PlantItem = (props) => {
     amber: 'bg-amber-600',
   };
 
-  console.log('console.log(plant) = ', plant);
+  console.log('PlantItem.jsx plant state = ', plant);
 
   return (
     <div className='mr-8 mb-5'>

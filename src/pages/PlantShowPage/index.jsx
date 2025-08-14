@@ -1,20 +1,32 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as plantService from 'services/plant';
+import LoadingSpinner from 'shared-components/LoadingSpinner';
+import NavBar from 'shared-components/NavBar.jsx';
+import PlantInfoSection from './PlantInfoSection';
 
 const PlantShowPage = () => {
+  const [plant, setPlant] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { plantId } = useParams();
 
   useEffect(() => {
     (async () => {
+      setIsLoading(true);
       const response = await plantService.getPlantById({ id: plantId });
-      console.log(await response.json());
+      setPlant(await response.json());
+      setIsLoading(false);
     })();
-  }, [plantId]);
+  }, []);
+
+//   console.log('PlantShowPage plant state = ', plant);
+
   return (
     <div>
-      <div>This is the PlantShowPage</div>
+      <NavBar />
+      <div className='flex justify-center bg-emerald-50 min-h-screen'>
+        {isLoading ? <LoadingSpinner /> : <PlantInfoSection plant={plant} />}
+      </div>
     </div>
   );
 };
