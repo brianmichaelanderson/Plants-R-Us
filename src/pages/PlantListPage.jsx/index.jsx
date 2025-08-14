@@ -3,6 +3,7 @@ import * as plantService from 'services/plant';
 import NavBar from 'shared-components/NavBar.jsx';
 import RedirectToSigninIfSignedOut from 'shared-components/RedirectToSigninIfSignedOut';
 import PlantItem from './PlantItem';
+import LoadingSpinner from 'shared-components/LoadingSpinner';
 
 const PlantListPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -33,9 +34,7 @@ const PlantListPage = () => {
       <NavBar />
       <div className='bg-emerald-50 min-h-screen'>
         {isLoading ? (
-          <div key='spinner' className='flex justify-center pt-40'>
-            <i className='fa-solid fa-spinner animate-spin text-3xl text-emerald-600'></i>
-          </div>
+          <LoadingSpinner />
         ) : (
           <div key='plants' className='flex justify-center'>
             <div className='w-full max-w-5xl px-3 py-4'>

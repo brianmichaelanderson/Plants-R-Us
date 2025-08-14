@@ -1,12 +1,14 @@
 import clsx from 'clsx';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const PlantItem = (props) => {
   const { plant } = props;
-  const getRandomIdx = (imagesArray) => Math.floor(Math.random() * imagesArray.length);
+  const getRandomIdx = (imagesArray) =>
+    Math.floor(Math.random() * imagesArray.length);
   const [imageIdx, setImageIdx] = useState(() => getRandomIdx(plant.images));
 
-// console.log('imageIdx', imageIdx, 'plant.images.length', plant.images.length)
+  // console.log('imageIdx', imageIdx, 'plant.images.length', plant.images.length)
 
   const POT_COLORS = {
     stone: 'bg-stone-200',
@@ -21,10 +23,12 @@ const PlantItem = (props) => {
 
   return (
     <div className='mr-8 mb-5'>
-      <img
-        className='w-[280px] h-[320px] rounded-md'
-        src={plant.images[imageIdx].src}
-      />
+      <Link to={`/plants/${plant.id}`}>
+        <img
+          className='w-[280px] h-[320px] rounded-md'
+          src={plant.images[imageIdx].src}
+        />
+      </Link>
       <div className='flex justify-between items-center mt-3 text-emerald-700 text-xl'>
         <div className='font-playfair'>{plant.name}</div>
         <div className='flex items-center'>${plant.price}</div>
