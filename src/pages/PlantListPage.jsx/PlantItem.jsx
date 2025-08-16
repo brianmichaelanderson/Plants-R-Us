@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { POT_COLORS } from 'shared-components/util';
 
 const PlantItem = (props) => {
   const { plant } = props;
@@ -9,15 +10,6 @@ const PlantItem = (props) => {
   const [imageIdx, setImageIdx] = useState(() => getRandomIdx(plant.images));
 
   // console.log('imageIdx', imageIdx, 'plant.images.length', plant.images.length)
-
-  const POT_COLORS = {
-    stone: 'bg-stone-200',
-    slate: 'bg-slate-300',
-    sky: 'bg-sky-700',
-    black: 'bg-gray-600',
-    white: 'bg-gray-50',
-    amber: 'bg-amber-600',
-  };
 
   console.log('PlantItem.jsx plant state = ', plant);
 
