@@ -1,12 +1,10 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { POT_COLORS } from 'shared-components/util';
+import { POT_COLORS,getRandomIdx } from 'shared-components/util'; //Moved POT_COLORS & getRandomIdx to a shared dir
 
 const PlantItem = (props) => {
   const { plant } = props;
-  const getRandomIdx = (imagesArray) =>
-    Math.floor(Math.random() * imagesArray.length);
   const [imageIdx, setImageIdx] = useState(() => getRandomIdx(plant.images));
 
   // console.log('imageIdx', imageIdx, 'plant.images.length', plant.images.length)

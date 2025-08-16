@@ -6,3 +6,5 @@ export const POT_COLORS = {
   white: 'bg-gray-50',
   amber: 'bg-amber-600',
 };
+export const getRandomIdx = (imagesArray) =>
+  Math.floor(Math.random() * imagesArray.length);
