@@ -1,3 +1,4 @@
+import BenefitBox from './BenefitBox';
 import PlantHeading from './PlantHeading';
 
 const PlantInfoSection = (props) => {
@@ -11,15 +12,29 @@ const PlantInfoSection = (props) => {
         <div className='block md:hidden px-8'>
           <PlantHeading plant={plant} />
         </div>
-        <img className='rounded-lg'src={plant.images[0].src} />
+        <img className='rounded-lg' src={plant.images[0].src} />
         {/* <p className='flex md:hidden text-slate-600 leading-relaxed p-2'>{plant.description}</p> */}
-      <div className='flex justify-center'>Todo</div>
+        <div className='flex mt-4'>
+          <BenefitBox
+            icon='far fa-check-circle'
+            title='Guaranteed Healthy'
+            description='Guaranteed to arrive healthy or your money back'
+          />
+          <div className=" border border-slate-300"></div>
+          <BenefitBox
+            icon='fa-solid fa-truck-fast'
+            title='Free Shipping'
+            description='Guaranteed to arrive healthy or your money back'
+          />
+        </div>
       </div>
       <div className='flex flex-col flex-1'>
         <div className='hidden md:block  px-8'>
           <PlantHeading plant={plant} />
         </div>
-        <p className='text-slate-600 leading-relaxed mt-4 px-1 md:px-8'>{plant.description}</p>
+        <p className='text-slate-600 leading-relaxed mt-4 px-1 md:px-8'>
+          {plant.description}
+        </p>
       </div>
     </div>
   );

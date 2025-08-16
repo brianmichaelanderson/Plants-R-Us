@@ -37,11 +37,11 @@ const PlantListPage = () => {
           <LoadingSpinner />
         ) : (
           <div key='plants' className='flex justify-center'>
-            <div className='w-full max-w-5xl px-3 py-4'>
-              <div className='font-playfair text-4xl text-emerald-700 '>
+            <div className='w-full max-w-5xl px-3 py-4 ml-8'>
+              <div className='font-playfair text-4xl text-emerald-700'>
                 Plants In Stock
               </div>
-              <div className='flex flex-wrap'>
+              <div className='flex justify-center flex-wrap'>
                 {plants.map((plant) => (
                   //Set unique key because backend randomizes what's returned for get plants requests
                   <div key={plant.name} className='mt-2 mr-2'>
