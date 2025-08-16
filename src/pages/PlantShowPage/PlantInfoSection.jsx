@@ -2,10 +2,11 @@ import { useState } from 'react';
 import BenefitBox from './BenefitBox';
 import PlantHeading from './PlantHeading';
 import PlantPurchaseOptions from './PlantPurchaseOptions';
+import { getRandomIdx } from 'shared-components/util';
 
 const PlantInfoSection = (props) => {
   const { plant } = props;
-  const [imageIdx, setImageIdx] = useState(0);
+  const [imageIdx, setImageIdx] = useState(() => getRandomIdx(plant.images));
 
   console.log('PlantInfoSection passed prop plant state = ', plant);
 

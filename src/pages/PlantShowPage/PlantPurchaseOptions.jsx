@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { POT_COLORS,getRandomIdx } from 'shared-components/util';
+import { POT_COLORS } from 'shared-components/util';
 
 const PlantPurchaseOptions = (props) => {
   const { plant, imageIdx, setImageIdx } = props;
@@ -15,13 +15,15 @@ const PlantPurchaseOptions = (props) => {
         {plant.images.map((image, idx) => (
           <div className='flex flex-col items-center mr-1'>
             <div
+            // unique key for each mapped output, but still want the idx from .map to use w/ setImageIdx in the onMouseEnter().
               key={image.pot_color}
               className={clsx(
                 'w-10 h-10 rounded-full mr-2 border border-slate-500 mb-1',
-                POT_COLORS[image.pot_color]
+                POT_COLORS[image.pot_color], imageIdx === idx && 'outline outline-1 outline-offset-2 outline-slate-600'
               )}  
+              onMouseEnter={()=> setImageIdx(idx)}
             ></div>
-            <div className='text-slate-500 text-sm'>{image.pot_color}</div>
+            <div className={clsx('text-slate-500 text-sm', imageIdx === idx && 'text-slate-800')}>{image.pot_color}</div>
           </div>
         ))}
       </div>
