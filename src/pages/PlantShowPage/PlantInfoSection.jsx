@@ -13,7 +13,6 @@ const PlantInfoSection = (props) => {
           <PlantHeading plant={plant} />
         </div>
         <img className='rounded-lg' src={plant.images[0].src} />
-        {/* <p className='flex md:hidden text-slate-600 leading-relaxed p-2'>{plant.description}</p> */}
         <div className='flex mt-4'>
           <BenefitBox
             icon='far fa-check-circle'
