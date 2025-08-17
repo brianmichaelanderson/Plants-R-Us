@@ -23,9 +23,9 @@ const NavBar = () => {
           </Link>
           Rica's Plants
         </div>
-        <div className='w-32 flex justify-center relative font-lato'>
+        <div className='w-32 flex justify-center relative font-lato text-emerald-200 text-xl '>
           <button
-            className='text-emerald-200 text-xl pr-3 flex items-center'
+            className='pr-3 flex items-center'
             onClick={() => {
               setUserMenuOpen(true);
             }}
@@ -42,6 +42,10 @@ const NavBar = () => {
               Sign-Out
             </button>
           )}
+          <button className='m-4 flex justify-center items-center'>
+            <i className='fa-solid fa-cart-shopping p-2 text-xl'></i>
+            cart
+          </button>
         </div>
       </div>
     </nav>
