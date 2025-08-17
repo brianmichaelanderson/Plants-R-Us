@@ -1,10 +1,13 @@
 import clsx from 'clsx';
 import { useState } from 'react';
+import { addPlantToCart } from 'services/cart';
+import LoadingSpinner from 'shared-components/LoadingSpinner';
 import { POT_COLORS } from 'shared-components/util';
 
 const PlantPurchaseOptions = (props) => {
   const { plant, imageIdx, setImageIdx } = props;
-  const [quantity, setQuantity] = useState(10);
+  const [quantity, setQuantity] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div>
@@ -62,9 +65,26 @@ const PlantPurchaseOptions = (props) => {
         </div>
         <button
           className='flex justify-center items-center border bg-emerald-600 flex-1 rounded-full mx-3 text-white px-2 py-2'
-          onClick={() => console.log('clicked')}
+          onClick={async () => {
+            setIsLoading(true);
+            const response = await addPlantToCart({
+              plantId: plant.id,
+              quantity,
+              potColor: plant.images[imageIdx].pot_color,
+            });
+            setIsLoading(false);
+            console.log(response.status);
+          }}
         >
-          <i className='fa-solid fa-cart-shopping p-2 text-2xl'></i>
+          {isLoading ? (
+            <span key='spinner'>
+              <i className='fa-solid fa-spinner animate-spin text-2xl p-2'></i>
+            </span>
+          ) : (
+            <span key='cart'>
+              <i className='fa-solid fa-cart-shopping p-2 text-2xl'></i>
+            </span>
+          )}
           Add to Cart
         </button>
       </div>
