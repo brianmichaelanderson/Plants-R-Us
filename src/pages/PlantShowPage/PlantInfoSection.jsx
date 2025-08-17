@@ -6,6 +6,7 @@ import { getRandomIdx } from 'shared-components/util';
 
 const PlantInfoSection = (props) => {
   const { plant } = props;
+  //implement imageIdx & its setter here in parent so image can change when onMouseEnter is activated to setImageIdx in child/PlantPurchaseOptions
   const [imageIdx, setImageIdx] = useState(() => getRandomIdx(plant.images));
 
   console.log('PlantInfoSection passed prop plant state = ', plant);
