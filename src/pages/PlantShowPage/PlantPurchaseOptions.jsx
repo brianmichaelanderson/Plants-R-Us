@@ -73,7 +73,7 @@ const PlantPurchaseOptions = (props) => {
               potColor: plant.images[imageIdx].pot_color,
             });
             setIsLoading(false);
-            console.log(response.status);
+            console.log('addPlantToCart response.status = ', response.status);
           }}
         >
           {isLoading ? (
