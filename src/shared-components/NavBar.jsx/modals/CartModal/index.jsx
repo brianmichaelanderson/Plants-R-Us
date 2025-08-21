@@ -1,7 +1,27 @@
 import { RemoveScroll } from 'react-remove-scroll';
+import { useState, useEffect, useContext } from 'react';
+import CartItem from './CartItem';
+import * as cartService from 'services/cart.js';
+import SessionContext from 'contexts/SessionContext';
+import LoadingSpinner from 'shared-components/LoadingSpinner';
 
 export const CartModal = (props) => {
-  const { username, setCartModalOpen } = props;
+  const { setCartModalOpen } = props;
+  const [cartItems, setCartItems] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const { username } = useContext(SessionContext);
+
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      const response = await cartService.getCart();
+      console.log(response.status);
+      const data = await response.json();
+      console.log('data from response = ', data);
+      setCartItems(data);
+      setIsLoading(false);
+    })();
+  }, []);
 
   return (
     <RemoveScroll>
@@ -16,6 +36,15 @@ export const CartModal = (props) => {
               <i className='fa-solid fa-circle-xmark hover:text-emerald-500'></i>
             </button>
           </div>
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : (
+            <div className='text-black'>
+              {cartItems.map((item) => 
+                <CartItem key={item.id} item={item} />
+              )}
+            </div>
+          )}
         </div>
       </div>
     </RemoveScroll>
@@ -23,3 +52,9 @@ export const CartModal = (props) => {
 };
 
 export default CartModal;
+
+// {!isLoading && cartItems.map((item, idx) => {
+// <div key={[0].item.id}>
+//   {item.id}
+// </div>
+// })}
