@@ -1,7 +1,8 @@
 import SessionContext from 'contexts/SessionContext';
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import CartModal from './modals/CartModal/CartItem';
+import CartModal from './modals/CartModal';
+
 
 const NavBar = () => {
   const { username, signOut } = useContext(SessionContext);
