@@ -60,7 +60,6 @@ const NavBar = () => {
       ) : (
         <div>
           <CartModal
-            username={username}
             cartModalOpen={cartModalOpen}
             setCartModalOpen={setCartModalOpen}
           />

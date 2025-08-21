@@ -9,7 +9,7 @@ const PlantItem = (props) => {
 
   // console.log('imageIdx', imageIdx, 'plant.images.length', plant.images.length)
 
-  console.log('PlantItem.jsx plant state = ', plant);
+  // console.log('PlantItem.jsx plant state = ', plant);
 
   return (
     <div className='mr-8 mb-5'>
