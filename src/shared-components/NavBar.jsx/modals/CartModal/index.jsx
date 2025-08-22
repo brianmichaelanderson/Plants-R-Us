@@ -32,34 +32,50 @@ export const CartModal = (props) => {
   return (
     <RemoveScroll>
       <div className='fixed left-0 top-0 w-full h-screen bg-black/30 flex justify-end backdrop-blur-sm'>
-        <div className='w-full max-w-xl min-h-screen bg-white text-white'>
-          <div className='flex justify-center py-4 bg-emerald-700 text-2xl relative'>
-            {username}'s Cart
+        <div className='flex flex-col w-full max-w-xl h-screen bg-emerald-50 text-white'>
+          <div className='text-center py-4 bg-emerald-700 text-2xl relative'>
             <button
               className='absolute right-0 top-0 p-1 text-emerald-400 text-3xl'
               onClick={() => setCartModalOpen(false)}
             >
               <i className='fa-solid fa-circle-xmark hover:text-emerald-500'></i>
             </button>
+            {username}'s Cart
           </div>
-          {isLoading ? (
-            <LoadingSpinner />
-          ) : (
-            <div className='text-black'>
-              {cartItems.map((item) => (
-                <div>
-                  {/* put a border under each cart item */}
-                  <div className='mx-6 my-10 border-b-2 border-slate-200'>
-                    <CartItem key={item.id} item={item} fetchCart={fetchCart} />
+            {isLoading ? (
+              <LoadingSpinner />
+            ) : (
+              <>
+              <div className='flex-1 overflow-y-scroll'>
+                {cartItems.map((item) => (
+                  <div key={item.id}>
+                    {/* put a border under each cart item */}
+                    <div className='mx-6 my-10 border-b-2 border-slate-200'>
+                      <CartItem item={item} fetchCart={fetchCart} />
+                    </div>
                   </div>
+                ))}
+          </div>
+            <div className='flex flex-col border-t-2 border-slate-300 mx-4 my-10 '>
+              <div className='text-slate-400 flex justify-between mx-8 my-4'>
+                <div>7 items</div>
+                <div>
+                  subtotal:
+                  <span className='text-slate-600 pl-2 text-lg'>$550</span>
                 </div>
-              ))}
+              </div>
+              <button className='bg-emerald-600 flex justify-center py-4 mx-8 rounded-full items-center'>
+                Checkout
+                <i className='fa-solid fa-arrow-right-long p-2 text-xl'></i>
+              </button>
             </div>
-          )}
+            </>
+            )}
+          </div>
         </div>
-      </div>
-    </RemoveScroll>
-  );
+       
+        </RemoveScroll>
+      );
 };
 
 export default CartModal;
