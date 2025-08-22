@@ -32,7 +32,7 @@ export const CartModal = (props) => {
   return (
     <RemoveScroll>
       <div className='fixed left-0 top-0 w-full h-screen bg-black/30 flex justify-end backdrop-blur-sm'>
-        <div className='flex flex-col w-full max-w-xl min-h-screen bg-emerald-50 text-white'>
+        <div className='flex flex-col w-full max-w-xl h-screen bg-emerald-50 text-white'>
           <div className='text-center py-4 bg-emerald-700 text-2xl relative'>
             <button
               className='absolute right-0 top-0 p-1 text-emerald-400 text-3xl'
@@ -42,7 +42,6 @@ export const CartModal = (props) => {
             </button>
             {username}'s Cart
           </div>
-          <div className="flex flex-col flex-1">
             {isLoading ? (
               <LoadingSpinner />
             ) : (
@@ -74,7 +73,7 @@ export const CartModal = (props) => {
             )}
           </div>
         </div>
-        </div>
+       
         </RemoveScroll>
       );
 };
