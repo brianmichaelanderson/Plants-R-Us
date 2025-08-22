@@ -1,5 +1,5 @@
 import { RemoveScroll } from 'react-remove-scroll';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import CartItem from './CartItem';
 import * as cartService from 'services/cart.js';
 import SessionContext from 'contexts/SessionContext';
@@ -11,17 +11,23 @@ export const CartModal = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const { username } = useContext(SessionContext);
 
-  useEffect(() => {
-    (async () => {
-      setIsLoading(true);
-      const response = await cartService.getCart();
-      console.log(response.status);
-      const data = await response.json();
-      console.log('data from response = ', data);
-      setCartItems(data);
-      setIsLoading(false);
-    })();
+  //useCallback meoizes the function so its reference stays stable
+  //across re-renders (unless dependencies change).
+  //Useful when passing the function to useEffect
+  //It prevents unnecessary re-renders caused by a new function reference - can cause infinite loops in useEffect.
+  const fetchCart = useCallback(async () => {
+    setIsLoading(true);
+    const response = await cartService.getCart();
+    console.log('getCart response.status', response.status);
+    const data = await response.json();
+    console.log('CartModel.jsx data from response.json() = ', data);
+    setCartItems(data);
+    setIsLoading(false);
   }, []);
+
+  useEffect(() => {
+    fetchCart();
+  }, [fetchCart]);
 
   return (
     <RemoveScroll>
@@ -40,9 +46,14 @@ export const CartModal = (props) => {
             <LoadingSpinner />
           ) : (
             <div className='text-black'>
-              {cartItems.map((item) => 
-                <CartItem key={item.id} item={item} />
-              )}
+              {cartItems.map((item) => (
+                <div>
+                  {/* put a border under each cart item */}
+                  <div className='mx-6 my-10 border-b-2 border-slate-200'>
+                    <CartItem key={item.id} item={item} fetchCart={fetchCart} />
+                  </div>
+                </div>
+              ))}
             </div>
           )}
         </div>
