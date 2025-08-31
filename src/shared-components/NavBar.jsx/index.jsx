@@ -2,6 +2,7 @@ import SessionContext from 'contexts/SessionContext';
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CartModal from './modals/CartModal';
+import ModalWrapper from './modals/ModalWrapper';
 
 const NavBar = () => {
   const { username, signOut } = useContext(SessionContext);
@@ -10,24 +11,27 @@ const NavBar = () => {
 
   return (
     <>
-      {!cartModalOpen ? (
-        <nav
-          className='bg-emerald-800 flex justify-center font-lato'
-          onMouseLeave={() => {
-            setUserMenuOpen(false);
-          }}
-        >
-          <div className='text-white font-playfair flex items-center justify-between w-full max-w-5xl mx-8 my-4 text-3xl'>
-            <div className='flex items-center p-3'>
-              <Link to='/plants'>
-                <img
-                  src='https://static-task-assets.react-formula.com/capstone_logo_light.png'
-                  className='w-10 mr-3'
-                />
-              </Link>
-              Plants-R-Us
-            </div>
-            <div className='flex justify-center items-center relative font-lato text-emerald-200 text-xl'>
+      <nav
+        className='bg-emerald-800 flex justify-center font-lato'
+        onMouseLeave={() => {
+          setUserMenuOpen(false);
+        }}
+      >
+        <div className='text-white font-playfair flex items-center justify-between w-full max-w-5xl mx-8 my-4 text-3xl'>
+          <div className='flex items-center p-3'>
+            <Link to='/plants'>
+              <img
+                src='https://static-task-assets.react-formula.com/capstone_logo_light.png'
+                className='w-10 mr-3'
+              />
+            </Link>
+            Plants-R-Us
+          </div>
+          <div className='flex justify-center items-center relative font-lato text-emerald-200 text-xl'>
+            <button className='flex sm:hidden'>
+              <i className='fa-solid fa-bars text-4xl p-4'></i>
+            </button>
+            <div className='sm:flex hidden'>
               <button
                 className='pr-3 flex items-center'
                 onClick={() => {
@@ -55,15 +59,17 @@ const NavBar = () => {
               </button>
             </div>
           </div>
-        </nav>
-      ) : (
-        <div>
-          <CartModal
-            cartModalOpen={cartModalOpen}
-            setCartModalOpen={setCartModalOpen}
-          />
         </div>
-      )}
+      </nav>
+        <ModalWrapper
+          isOpen={cartModalOpen}
+          onCloseClick={() => {
+            setCartModalOpen(false);
+          }}
+        >
+          <CartModal />
+        </ModalWrapper>
+
     </>
   );
 };
