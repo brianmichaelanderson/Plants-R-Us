@@ -1,12 +1,20 @@
 import SessionContext from 'contexts/SessionContext';
 import { useContext } from 'react';
+import { motion } from 'framer-motion';
 
 const MobileModalMenu = (props) => {
   const { onCartOpenClick } = props;
   const { username, signOut } = useContext(SessionContext);
 
   return (
-    <div className='flex flex-col items-start pt-12 text-emerald-200 bg-emerald-800 pr-10 pb-6 rounded-bl-lg shadow-md'>
+    <motion.div
+      initial={{ y: '-100%' }}
+      //-100% slides it down from top.  Positive 100 would slide it down from the bottom of the model rather than from the top of the modal.
+      animate={{ y: 0 }}
+      transition={{ duration: 0.25 }}
+      // Above causes this entire div to slide down from the top
+      className='flex flex-col items-start pt-12 text-emerald-200 bg-emerald-800 pr-10 pb-6 rounded-bl-lg shadow-md'
+    >
       <div className='px-8 py-4 flex items-center justify-start'>
         <i className='mr-2 text-xl fa-solid fa-user'></i>
         {username}
@@ -25,7 +33,7 @@ const MobileModalMenu = (props) => {
         <i className='fa-solid fa-cart-shopping p-2 text-xl mr-2'></i>
         cart
       </button>
-    </div>
+    </motion.div>
   );
 };
 export default MobileModalMenu;

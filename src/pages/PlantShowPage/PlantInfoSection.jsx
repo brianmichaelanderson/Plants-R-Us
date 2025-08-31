@@ -3,7 +3,7 @@ import BenefitBox from './BenefitBox';
 import PlantHeading from './PlantHeading';
 import PlantPurchaseOptions from './PlantPurchaseOptions';
 import { getRandomIdx } from 'shared-components/util';
-import Zoom from 'react-medium-image-zoom';
+import Zoom from 'react-medium-image-zoom';  //for zooming into images
 import 'react-medium-image-zoom/dist/styles.css';
 
 const PlantInfoSection = (props) => {
@@ -11,7 +11,7 @@ const PlantInfoSection = (props) => {
   //implement imageIdx & its setter here in parent so image can change when onMouseEnter is activated to setImageIdx in child/PlantPurchaseOptions
   const [imageIdx, setImageIdx] = useState(() => getRandomIdx(plant.images));
 
-  console.log('PlantInfoSection passed prop plant state = ', plant);
+  // console.log('PlantInfoSection passed prop plant state = ', plant);
 
   return (
     <div className='flex flex-col md:flex-row w-full max-w-5xl my-8 mx-6'>
