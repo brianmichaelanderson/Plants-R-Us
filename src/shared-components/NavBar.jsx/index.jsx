@@ -3,7 +3,6 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CartModal from './modals/CartModal';
 
-
 const NavBar = () => {
   const { username, signOut } = useContext(SessionContext);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
@@ -26,9 +25,9 @@ const NavBar = () => {
                   className='w-10 mr-3'
                 />
               </Link>
-              Rica's Plants
+              Plants-R-Us
             </div>
-            <div className='w-32 flex justify-center relative font-lato text-emerald-200 text-xl '>
+            <div className='flex justify-center items-center relative font-lato text-emerald-200 text-xl'>
               <button
                 className='pr-3 flex items-center'
                 onClick={() => {
@@ -40,7 +39,7 @@ const NavBar = () => {
               </button>
               {userMenuOpen && (
                 <button
-                  className='absolute top-[32px] text-sm bg-white text-slate-600 px-2 rounded-md py-1'
+                  className='absolute -bottom-3 left-0 text-sm bg-white text-slate-600 px-2 rounded-md py-1'
                   onClick={signOut}
                 >
                   <i className='fa-solid fa-arrow-right-from-bracket pr-1'></i>
