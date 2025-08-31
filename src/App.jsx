@@ -7,6 +7,7 @@ import SessionContext from 'contexts/SessionContext';
 import * as userService from 'services/user';
 import PlantListPage from 'pages/PlantListPage.jsx';
 import PlantShowPage from 'pages/PlantShowPage';
+import ScrollToTop from 'shared-components/ScrollToTop';
 
 const App = () => {
   //looks in local storage to return a token or return null for the initial sessionToken state.
@@ -30,6 +31,7 @@ const App = () => {
       }}
     >
       <BrowserRouter>
+      <ScrollToTop />
         <Routes>
           <Route path='/' element={<SignInPage />} />
           <Route path='/signup' element={<SignUpPage />} />
