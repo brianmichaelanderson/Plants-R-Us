@@ -16,7 +16,7 @@ const FormContainer = ({ children }) => {
         '
         />
         <div className='text-emerald-700 font-playfair text-2xl'>
-          Rica's Plants
+          Plants-R-Us
         </div>
         <div className="">{children}</div>
       </div>
