@@ -30,8 +30,11 @@ const NavBar = () => {
             Plants-R-Us
           </div>
           <div className='flex justify-center items-center relative font-lato text-emerald-200 text-xl'>
-            <button className='flex sm:hidden'
-              onClick={() => {setMobileMenuOpen(true)}}
+            <button
+              className='flex sm:hidden'
+              onClick={() => {
+                setMobileMenuOpen(true);
+              }}
             >
               <i className='fa-solid fa-bars text-4xl p-4'></i>
             </button>
@@ -67,10 +70,16 @@ const NavBar = () => {
       </nav>
       <ModalWrapper
         isOpen={mobileMenuOpen}
-        onCloseClick={() => {setMobileMenuOpen(false)}}
-        >
-        <MobileModalMenu 
-        onCartOpenClick={() => {setCartModalOpen(true)}}
+        onCloseClick={() => {
+          setMobileMenuOpen(false);
+        }}
+      >
+        <MobileModalMenu
+          onCartOpenClick={() => {
+            setCartModalOpen(true);
+            //Set mobile menu to closed so when cart is closed mobile menu won't be open behind.
+            setMobileMenuOpen(false);
+          }}
         />
       </ModalWrapper>
       <ModalWrapper
