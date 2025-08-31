@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { POT_COLORS,getRandomIdx } from 'shared-components/util'; //Moved POT_COLORS & getRandomIdx to a shared dir
+import { POT_COLORS, getRandomIdx } from 'shared-components/util'; //Moved POT_COLORS & getRandomIdx to a shared dir
 
 const PlantItem = (props) => {
   const { plant } = props;
