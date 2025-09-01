@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
+//Removed motion.div from the mapped PlantItems.  It was a bit janky w/ the async
 import * as plantService from 'services/plant';
 import NavBar from 'shared-components/NavBar.jsx';
 import RedirectToSigninIfSignedOut from 'shared-components/RedirectToSigninIfSignedOut';
@@ -45,21 +46,12 @@ const PlantListPage = () => {
               <div className='flex justify-center flex-wrap'>
                 {plants.map((plant, idx) => (
                   //Set unique key because backend randomizes what's returned for get plants requests
-                  <motion.div
+                  <div
                     key={plant.name}
-                    initial={{ opacity: 0, y: '20px' }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      //mod 3 always gives remainder 0, 1, or 2
-                      //Then that gets multiplied by .02.
-                      delay: 0.3 + (idx % 3) * 0.02,
-                      duration: 0.4,
-                    }}
                     className='mt-2 mr-2'
                   >
                     <PlantItem plant={plant} />
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
