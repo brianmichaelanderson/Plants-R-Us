@@ -44,7 +44,7 @@ const PlantListPage = () => {
                 Plants In Stock
               </div>
               <div className='flex justify-center flex-wrap'>
-                {plants.map((plant, idx) => (
+                {plants.map((plant) => (
                   //Set unique key because backend randomizes what's returned for get plants requests
                   <div
                     key={plant.name}
