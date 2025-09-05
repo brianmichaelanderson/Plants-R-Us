@@ -66,7 +66,8 @@ export const CartModal = () => {
                 <span className='text-slate-600 pl-2 text-lg'>${subTotal}</span>
               </div>
             </div>
-            <button className='bg-emerald-600 text-white flex justify-center py-4 mx-8 rounded-full items-center'>
+            <button className='bg-emerald-600 text-white flex justify-center py-4 mx-8 rounded-full items-center'
+              onClick={() => alert('Checkout functionality coming soon!')}>
               Checkout
               <i className='fa-solid fa-arrow-right-long p-2 text-xl'></i>
             </button>
